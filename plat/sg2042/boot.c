@@ -628,7 +628,7 @@ int add_memory_node(uint64_t addr, uint64_t len, int numa_node_id)
 int modify_ddr_node(void)
 {
 	uint64_t start, size;
-	uint64_t reserved_start, reserved_size;
+//	uint64_t reserved_start, reserved_size;
 	int chip_num = 1;
 	int numa_node_id;
 
@@ -644,7 +644,7 @@ int modify_ddr_node(void)
 
 			if (size == 0)
 				break;
-
+#if 0
 			if (i == 0 && j == 0) {
 				//reserved memory for pcie switch
 				reserved_start = 0xc0000000;
@@ -659,7 +659,7 @@ int modify_ddr_node(void)
 					start = reserved_start + reserved_size;
 				}
 			}
-
+#endif
 			add_memory_node(start, size, numa_node_id);
 			show_ddr_node(start);
 		}
